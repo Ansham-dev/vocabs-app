@@ -1,6 +1,6 @@
 # Vocabs — Korean & French flashcards
 
-![CI](https://github.com/<your-username>/vocabs-app/actions/workflows/ci/badge.svg)
+![CI](https://github.com/Ansham-dev/vocabs-app/actions/workflows/ci/badge.svg)
 
 Spaced-repetition vocabulary trainer (TOPIK I Korean + A1/A2 French) with per-user
 review history, streaks + activity heatmap, and an AI conversation partner.
