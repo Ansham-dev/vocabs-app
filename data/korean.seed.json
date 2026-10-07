@@ -1,0 +1,1602 @@
+[
+ {
+  "language": "korean",
+  "word": "나",
+  "translation": "I, me",
+  "exampleSentence": "나는 학생이에요.",
+  "romanization": "na",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "너",
+  "translation": "you",
+  "exampleSentence": "너는 어디에 있어?",
+  "romanization": "neo",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "우리",
+  "translation": "we, our",
+  "exampleSentence": "우리 집은 서울에 있어요.",
+  "romanization": "uri",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "사람",
+  "translation": "person",
+  "exampleSentence": "많은 사람이 와요.",
+  "romanization": "saram",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "친구",
+  "translation": "friend",
+  "exampleSentence": "친구와 영화를 봐요.",
+  "romanization": "chingu",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "가족",
+  "translation": "family",
+  "exampleSentence": "가족이 다섯 명이에요.",
+  "romanization": "gajok",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "부모님",
+  "translation": "parents",
+  "exampleSentence": "부모님께 전화해요.",
+  "romanization": "bumonim",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "아이",
+  "translation": "child",
+  "exampleSentence": "아이가 울어요.",
+  "romanization": "ai",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "남자",
+  "translation": "man",
+  "exampleSentence": "남자가 와요.",
+  "romanization": "namja",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "여자",
+  "translation": "woman",
+  "exampleSentence": "여자가 웃어요.",
+  "romanization": "yeoja",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "선생님",
+  "translation": "teacher",
+  "exampleSentence": "선생님이 친절해요.",
+  "romanization": "seonsaengnim",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "학생",
+  "translation": "student",
+  "exampleSentence": "저는 학생이에요.",
+  "romanization": "haksaeng",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "집",
+  "translation": "house, home",
+  "exampleSentence": "집에 가요.",
+  "romanization": "jip",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "학교",
+  "translation": "school",
+  "exampleSentence": "학교에 가요.",
+  "romanization": "hakgyo",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "회사",
+  "translation": "company",
+  "exampleSentence": "회사에 다녀요.",
+  "romanization": "hoesa",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "병원",
+  "translation": "hospital",
+  "exampleSentence": "병원에 가요.",
+  "romanization": "byeongwon",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "은행",
+  "translation": "bank",
+  "exampleSentence": "은행에서 돈을 찾아요.",
+  "romanization": "eunhaeng",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "우체국",
+  "translation": "post office",
+  "exampleSentence": "우체국에 가요.",
+  "romanization": "ucheguk",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "식당",
+  "translation": "restaurant",
+  "exampleSentence": "식당에서 밥을 먹어요.",
+  "romanization": "sikdang",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "카페",
+  "translation": "café",
+  "exampleSentence": "카페에서 커피를 마셔요.",
+  "romanization": "kape",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "시장",
+  "translation": "market",
+  "exampleSentence": "시장에서 과일을 사요.",
+  "romanization": "sijang",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "백화점",
+  "translation": "department store",
+  "exampleSentence": "백화점에 가요.",
+  "romanization": "baekhwajeom",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "공원",
+  "translation": "park",
+  "exampleSentence": "공원에서 산책해요.",
+  "romanization": "gongwon",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "도서관",
+  "translation": "library",
+  "exampleSentence": "도서관에서 공부해요.",
+  "romanization": "doseogwan",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "영화관",
+  "translation": "cinema",
+  "exampleSentence": "영화관에서 영화를 봐요.",
+  "romanization": "yeonghwagwan",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "나라",
+  "translation": "country",
+  "exampleSentence": "어느 나라 사람이에요?",
+  "romanization": "nara",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "한국",
+  "translation": "Korea",
+  "exampleSentence": "한국에 살아요.",
+  "romanization": "hanguk",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "서울",
+  "translation": "Seoul",
+  "exampleSentence": "서울은 커요.",
+  "romanization": "seoul",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "언어",
+  "translation": "language",
+  "exampleSentence": "외국어를 배워요.",
+  "romanization": "eoneo",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "한국어",
+  "translation": "Korean language",
+  "exampleSentence": "한국어를 공부해요.",
+  "romanization": "hangugeo",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "이름",
+  "translation": "name",
+  "exampleSentence": "이름이 뭐예요?",
+  "romanization": "ireum",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "나이",
+  "translation": "age",
+  "exampleSentence": "나이가 어떻게 돼요?",
+  "romanization": "nai",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "시간",
+  "translation": "time",
+  "exampleSentence": "지금 몇 시예요?",
+  "romanization": "sigan",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "오늘",
+  "translation": "today",
+  "exampleSentence": "오늘 날씨가 좋아요.",
+  "romanization": "oneul",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "내일",
+  "translation": "tomorrow",
+  "exampleSentence": "내일 만나요.",
+  "romanization": "naeil",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "어제",
+  "translation": "yesterday",
+  "exampleSentence": "어제 영화를 봤어요.",
+  "romanization": "eoje",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "아침",
+  "translation": "morning",
+  "exampleSentence": "아침을 먹어요.",
+  "romanization": "achim",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "점심",
+  "translation": "lunch",
+  "exampleSentence": "점심을 먹어요.",
+  "romanization": "jeomsim",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "저녁",
+  "translation": "evening, dinner",
+  "exampleSentence": "저녁을 같이 먹어요.",
+  "romanization": "jeonyeok",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "밤",
+  "translation": "night",
+  "exampleSentence": "밤에 자요.",
+  "romanization": "bam",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "요일",
+  "translation": "day of the week",
+  "exampleSentence": "오늘은 일요일이에요.",
+  "romanization": "yoil",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "주",
+  "translation": "week",
+  "exampleSentence": "다음 주에 만나요.",
+  "romanization": "ju",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "월",
+  "translation": "month",
+  "exampleSentence": "3월에 와요.",
+  "romanization": "wol",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "년",
+  "translation": "year",
+  "exampleSentence": "올해는 2026년이에요.",
+  "romanization": "nyeon",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "날씨",
+  "translation": "weather",
+  "exampleSentence": "날씨가 좋아요.",
+  "romanization": "nalssi",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "비",
+  "translation": "rain",
+  "exampleSentence": "비가 와요.",
+  "romanization": "bi",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "눈",
+  "translation": "snow",
+  "exampleSentence": "눈이 와요.",
+  "romanization": "nun",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "봄",
+  "translation": "spring",
+  "exampleSentence": "봄에 꽃이 펴요.",
+  "romanization": "bom",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "여름",
+  "translation": "summer",
+  "exampleSentence": "여름은 더워요.",
+  "romanization": "yeoreum",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "가을",
+  "translation": "autumn",
+  "exampleSentence": "가을은 시원해요.",
+  "romanization": "gaeur",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "겨울",
+  "translation": "winter",
+  "exampleSentence": "겨울은 추워요.",
+  "romanization": "gyeoul",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "물",
+  "translation": "water",
+  "exampleSentence": "물을 마셔요.",
+  "romanization": "mul",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "밥",
+  "translation": "rice, meal",
+  "exampleSentence": "밥을 먹어요.",
+  "romanization": "bap",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "음식",
+  "translation": "food",
+  "exampleSentence": "한국 음식을 좋아해요.",
+  "romanization": "eumsik",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "빵",
+  "translation": "bread",
+  "exampleSentence": "빵을 사요.",
+  "romanization": "ppang",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "우유",
+  "translation": "milk",
+  "exampleSentence": "우유를 마셔요.",
+  "romanization": "uyu",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "커피",
+  "translation": "coffee",
+  "exampleSentence": "커피를 마셔요.",
+  "romanization": "keopi",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "차",
+  "translation": "tea",
+  "exampleSentence": "따뜻한 차를 마셔요.",
+  "romanization": "cha",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "사과",
+  "translation": "apple",
+  "exampleSentence": "사과를 먹어요.",
+  "romanization": "sagwa",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "돈",
+  "translation": "money",
+  "exampleSentence": "돈이 없어요.",
+  "romanization": "don",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "책",
+  "translation": "book",
+  "exampleSentence": "책을 읽어요.",
+  "romanization": "chaek",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "전화",
+  "translation": "phone",
+  "exampleSentence": "전화를 해요.",
+  "romanization": "jeonhwa",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "사진",
+  "translation": "photo",
+  "exampleSentence": "사진을 찍어요.",
+  "romanization": "sajin",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "영화",
+  "translation": "movie",
+  "exampleSentence": "영화를 봐요.",
+  "romanization": "yeonghwa",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "음악",
+  "translation": "music",
+  "exampleSentence": "음악을 들어요.",
+  "romanization": "eumak",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "노래",
+  "translation": "song",
+  "exampleSentence": "노래를 불러요.",
+  "romanization": "norae",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "운동",
+  "translation": "exercise",
+  "exampleSentence": "운동을 해요.",
+  "romanization": "undong",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "여행",
+  "translation": "travel",
+  "exampleSentence": "여행을 가요.",
+  "romanization": "yeohaeng",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "가다",
+  "translation": "to go",
+  "exampleSentence": "학교에 가요.",
+  "romanization": "gada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "오다",
+  "translation": "to come",
+  "exampleSentence": "친구가 와요.",
+  "romanization": "oda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "먹다",
+  "translation": "to eat",
+  "exampleSentence": "밥을 먹어요.",
+  "romanization": "meokda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "마시다",
+  "translation": "to drink",
+  "exampleSentence": "물을 마셔요.",
+  "romanization": "masida",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "보다",
+  "translation": "to see, to watch",
+  "exampleSentence": "영화를 봐요.",
+  "romanization": "boda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "읽다",
+  "translation": "to read",
+  "exampleSentence": "책을 읽어요.",
+  "romanization": "ikda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "쓰다",
+  "translation": "to write",
+  "exampleSentence": "편지를 써요.",
+  "romanization": "sseuda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "듣다",
+  "translation": "to listen",
+  "exampleSentence": "음악을 들어요.",
+  "romanization": "deutda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "말하다",
+  "translation": "to speak",
+  "exampleSentence": "한국어를 말해요.",
+  "romanization": "malhada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "공부하다",
+  "translation": "to study",
+  "exampleSentence": "한국어를 공부해요.",
+  "romanization": "gongbuhada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "일하다",
+  "translation": "to work",
+  "exampleSentence": "회사에서 일해요.",
+  "romanization": "ilhada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "사다",
+  "translation": "to buy",
+  "exampleSentence": "사과를 사요.",
+  "romanization": "sada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "만나다",
+  "translation": "to meet",
+  "exampleSentence": "친구를 만나요.",
+  "romanization": "mannada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "좋아하다",
+  "translation": "to like",
+  "exampleSentence": "음악을 좋아해요.",
+  "romanization": "joahada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "자다",
+  "translation": "to sleep",
+  "exampleSentence": "밤에 자요.",
+  "romanization": "jada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "일어나다",
+  "translation": "to get up",
+  "exampleSentence": "일곱 시에 일어나요.",
+  "romanization": "ireonada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "좋다",
+  "translation": "good",
+  "exampleSentence": "날씨가 좋아요.",
+  "romanization": "jota",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "나쁘다",
+  "translation": "bad",
+  "exampleSentence": "기분이 나빠요.",
+  "romanization": "nappeuda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "크다",
+  "translation": "big",
+  "exampleSentence": "집이 커요.",
+  "romanization": "keuda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "작다",
+  "translation": "small",
+  "exampleSentence": "방이 작아요.",
+  "romanization": "jakda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "많다",
+  "translation": "many",
+  "exampleSentence": "사람이 많아요.",
+  "romanization": "manta",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "덥다",
+  "translation": "hot (weather)",
+  "exampleSentence": "오늘은 더워요.",
+  "romanization": "deopda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "춥다",
+  "translation": "cold",
+  "exampleSentence": "겨울은 추워요.",
+  "romanization": "chupda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "쉽다",
+  "translation": "easy",
+  "exampleSentence": "이 문제는 쉬워요.",
+  "romanization": "swipda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "어렵다",
+  "translation": "difficult",
+  "exampleSentence": "한국어가 어려워요.",
+  "romanization": "eoryeopda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "재미있다",
+  "translation": "interesting, fun",
+  "exampleSentence": "영화가 재미있어요.",
+  "romanization": "jaemiitda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "맛있다",
+  "translation": "delicious",
+  "exampleSentence": "김치가 맛있어요.",
+  "romanization": "masitda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "바쁘다",
+  "translation": "busy",
+  "exampleSentence": "오늘은 바빠요.",
+  "romanization": "bappeuda",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "행복하다",
+  "translation": "happy",
+  "exampleSentence": "행복해요.",
+  "romanization": "haengbokhada",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "하나",
+  "translation": "one",
+  "exampleSentence": "사과 하나 주세요.",
+  "romanization": "hana",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "열",
+  "translation": "ten",
+  "exampleSentence": "열 시에 만나요.",
+  "romanization": "yeol",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "천",
+  "translation": "thousand",
+  "exampleSentence": "천 원이에요.",
+  "romanization": "cheon",
+  "difficulty": "beginner"
+ },
+ {
+  "language": "korean",
+  "word": "결정하다",
+  "translation": "to decide",
+  "exampleSentence": "빨리 결정해요.",
+  "romanization": "gyeoljeonghada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "설명하다",
+  "translation": "to explain",
+  "exampleSentence": "선생님이 설명해요.",
+  "romanization": "seolmyeonghada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "준비하다",
+  "translation": "to prepare",
+  "exampleSentence": "시험을 준비해요.",
+  "romanization": "junbihada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "시작하다",
+  "translation": "to start",
+  "exampleSentence": "수업이 시작해요.",
+  "romanization": "sijakhada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "끝나다",
+  "translation": "to end",
+  "exampleSentence": "영화가 끝나요.",
+  "romanization": "kkeunnada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "필요하다",
+  "translation": "to need",
+  "exampleSentence": "도움이 필요해요.",
+  "romanization": "piryohada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "가능하다",
+  "translation": "possible",
+  "exampleSentence": "내일 만나는 게 가능해요.",
+  "romanization": "ganeunghada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "불가능하다",
+  "translation": "impossible",
+  "exampleSentence": "그건 불가능해요.",
+  "romanization": "bulganeunghada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "경험",
+  "translation": "experience",
+  "exampleSentence": "여행 경험이 많아요.",
+  "romanization": "gyeongheom",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "기회",
+  "translation": "opportunity",
+  "exampleSentence": "좋은 기회예요.",
+  "romanization": "gihoe",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "약속",
+  "translation": "promise, appointment",
+  "exampleSentence": "약속을 지켜요.",
+  "romanization": "yaksok",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "걱정",
+  "translation": "worry",
+  "exampleSentence": "걱정하지 마세요.",
+  "romanization": "geokjeong",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "노력",
+  "translation": "effort",
+  "exampleSentence": "열심히 노력해요.",
+  "romanization": "noryeok",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "계획",
+  "translation": "plan",
+  "exampleSentence": "주말 계획이 있어요.",
+  "romanization": "gyehoek",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "문제",
+  "translation": "problem, question",
+  "exampleSentence": "문제를 풀어요.",
+  "romanization": "munje",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "방법",
+  "translation": "method, way",
+  "exampleSentence": "좋은 방법이 있어요.",
+  "romanization": "bangbeop",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "이유",
+  "translation": "reason",
+  "exampleSentence": "이유를 알아요.",
+  "romanization": "iyu",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "결과",
+  "translation": "result",
+  "exampleSentence": "결과가 좋아요.",
+  "romanization": "gyeolgwa",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "질문",
+  "translation": "question",
+  "exampleSentence": "질문이 있어요.",
+  "romanization": "jilmun",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "대답",
+  "translation": "answer",
+  "exampleSentence": "대답을 해 주세요.",
+  "romanization": "daedap",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "전화번호",
+  "translation": "phone number",
+  "exampleSentence": "전화번호를 알려 주세요.",
+  "romanization": "jeonhwabeonho",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "주소",
+  "translation": "address",
+  "exampleSentence": "주소를 적어 주세요.",
+  "romanization": "juso",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "취미",
+  "translation": "hobby",
+  "exampleSentence": "취미가 뭐예요?",
+  "romanization": "chwimi",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "꿈",
+  "translation": "dream",
+  "exampleSentence": "꿈이 커요.",
+  "romanization": "kkum",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "건강",
+  "translation": "health",
+  "exampleSentence": "건강이 중요해요.",
+  "romanization": "geongang",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "안전",
+  "translation": "safety",
+  "exampleSentence": "안전이 제일이에요.",
+  "romanization": "anjeon",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "자유",
+  "translation": "freedom",
+  "exampleSentence": "자유를 원해요.",
+  "romanization": "jayu",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "평화",
+  "translation": "peace",
+  "exampleSentence": "평화를 사랑해요.",
+  "romanization": "pyeonghwa",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "빨리",
+  "translation": "quickly",
+  "exampleSentence": "빨리 오세요.",
+  "romanization": "ppalli",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "천천히",
+  "translation": "slowly",
+  "exampleSentence": "천천히 말해 주세요.",
+  "romanization": "cheoncheonhi",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "자주",
+  "translation": "often",
+  "exampleSentence": "자주 만나요.",
+  "romanization": "jaju",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "가끔",
+  "translation": "sometimes",
+  "exampleSentence": "가끔 영화를 봐요.",
+  "romanization": "gakkeum",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "항상",
+  "translation": "always",
+  "exampleSentence": "항상 웃어요.",
+  "romanization": "hangsang",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "절대",
+  "translation": "never",
+  "exampleSentence": "절대 늦지 마세요.",
+  "romanization": "jeoldae",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "벌써",
+  "translation": "already",
+  "exampleSentence": "벌써 열두 시예요.",
+  "romanization": "beolsseo",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "아직",
+  "translation": "yet, still",
+  "exampleSentence": "아직 안 먹었어요.",
+  "romanization": "ajik",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "같이",
+  "translation": "together",
+  "exampleSentence": "같이 가요.",
+  "romanization": "gachi",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "혼자",
+  "translation": "alone",
+  "exampleSentence": "혼자 여행해요.",
+  "romanization": "honja",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "그래서",
+  "translation": "so, therefore",
+  "exampleSentence": "비가 와요. 그래서 우산을 가져가요.",
+  "romanization": "geuraeseo",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "하지만",
+  "translation": "but",
+  "exampleSentence": "비가 오지만 가요.",
+  "romanization": "hajiman",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "그리고",
+  "translation": "and",
+  "exampleSentence": "밥을 먹고 그리고 공부해요.",
+  "romanization": "geurigo",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "만약",
+  "translation": "if",
+  "exampleSentence": "만약 비가 오면 집에 있어요.",
+  "romanization": "manyak",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "비싸다",
+  "translation": "expensive",
+  "exampleSentence": "이 가방은 비싸요.",
+  "romanization": "bissada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "싸다",
+  "translation": "cheap",
+  "exampleSentence": "이 모자는 싸요.",
+  "romanization": "ssada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "가깝다",
+  "translation": "near",
+  "exampleSentence": "학교가 가까워요.",
+  "romanization": "gakkapda",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "멀다",
+  "translation": "far",
+  "exampleSentence": "집이 멀어요.",
+  "romanization": "meolda",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "새롭다",
+  "translation": "new",
+  "exampleSentence": "새 옷을 샀어요.",
+  "romanization": "saeropda",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "시원하다",
+  "translation": "cool, refreshing",
+  "exampleSentence": "바람이 시원해요.",
+  "romanization": "siwonhada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "따뜻하다",
+  "translation": "warm",
+  "exampleSentence": "차가 따뜻해요.",
+  "romanization": "ttatteuthada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "시끄럽다",
+  "translation": "noisy",
+  "exampleSentence": "밖이 시끄러워요.",
+  "romanization": "sikkeureopda",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "조용하다",
+  "translation": "quiet",
+  "exampleSentence": "도서관이 조용해요.",
+  "romanization": "joyonghada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "친절하다",
+  "translation": "kind",
+  "exampleSentence": "그분은 친절해요.",
+  "romanization": "chinjeolhada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "유명하다",
+  "translation": "famous",
+  "exampleSentence": "그 배우는 유명해요.",
+  "romanization": "yumyeonghada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "편리하다",
+  "translation": "convenient",
+  "exampleSentence": "교통이 편리해요.",
+  "romanization": "pyeonrihada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "위험하다",
+  "translation": "dangerous",
+  "exampleSentence": "밤길은 위험해요.",
+  "romanization": "wiheomhada",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "다르다",
+  "translation": "different",
+  "exampleSentence": "생각이 달라요.",
+  "romanization": "dareuda",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "같다",
+  "translation": "same",
+  "exampleSentence": "나도 같아요.",
+  "romanization": "gatda",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "이기다",
+  "translation": "to win",
+  "exampleSentence": "경기에서 이겨요.",
+  "romanization": "igida",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "지다",
+  "translation": "to lose",
+  "exampleSentence": "경기에서 졌어요.",
+  "romanization": "jida",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "놓치다",
+  "translation": "to miss",
+  "exampleSentence": "버스를 놓쳤어요.",
+  "romanization": "nochida",
+  "difficulty": "intermediate"
+ },
+ {
+  "language": "korean",
+  "word": "환경",
+  "translation": "environment",
+  "exampleSentence": "환경을 보호해요.",
+  "romanization": "hwangyeong",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "경제",
+  "translation": "economy",
+  "exampleSentence": "경제가 좋아져요.",
+  "romanization": "gyeongje",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "사회",
+  "translation": "society",
+  "exampleSentence": "사회가 변해요.",
+  "romanization": "sahoe",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "문화",
+  "translation": "culture",
+  "exampleSentence": "한국 문화를 배워요.",
+  "romanization": "munhwa",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "역사",
+  "translation": "history",
+  "exampleSentence": "역사를 공부해요.",
+  "romanization": "yeoksa",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "정치",
+  "translation": "politics",
+  "exampleSentence": "정치에 관심이 있어요.",
+  "romanization": "jeongchi",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "교육",
+  "translation": "education",
+  "exampleSentence": "교육이 중요해요.",
+  "romanization": "gyoyuk",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "발전",
+  "translation": "development",
+  "exampleSentence": "기술이 발전해요.",
+  "romanization": "baljeon",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "영향",
+  "translation": "influence",
+  "exampleSentence": "큰 영향을 줘요.",
+  "romanization": "yeonghyang",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "해결하다",
+  "translation": "to solve",
+  "exampleSentence": "문제를 해결해요.",
+  "romanization": "haegyeolhada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "증가하다",
+  "translation": "to increase",
+  "exampleSentence": "인구가 증가해요.",
+  "romanization": "jeunggahada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "감소하다",
+  "translation": "to decrease",
+  "exampleSentence": "쓰레기가 감소해요.",
+  "romanization": "gamsohada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "유지하다",
+  "translation": "to maintain",
+  "exampleSentence": "건강을 유지해요.",
+  "romanization": "yujihada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "참여하다",
+  "translation": "to participate",
+  "exampleSentence": "행사에 참여해요.",
+  "romanization": "chamyeohada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "요구하다",
+  "translation": "to demand",
+  "exampleSentence": "설명을 요구해요.",
+  "romanization": "yoguhada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "주장하다",
+  "translation": "to claim",
+  "exampleSentence": "그는 결백을 주장해요.",
+  "romanization": "jujanghada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "비판하다",
+  "translation": "to criticize",
+  "exampleSentence": "정책을 비판해요.",
+  "romanization": "bipanhada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "찬성하다",
+  "translation": "to agree",
+  "exampleSentence": "의견에 찬성해요.",
+  "romanization": "chanseonghada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "반대하다",
+  "translation": "to oppose",
+  "exampleSentence": "계획에 반대해요.",
+  "romanization": "bandaehada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "기대하다",
+  "translation": "to expect",
+  "exampleSentence": "좋은 결과를 기대해요.",
+  "romanization": "gidaehada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "실망하다",
+  "translation": "to be disappointed",
+  "exampleSentence": "결과에 실망해요.",
+  "romanization": "silmanghada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "만족하다",
+  "translation": "to be satisfied",
+  "exampleSentence": "서비스에 만족해요.",
+  "romanization": "manjokhada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "성공하다",
+  "translation": "to succeed",
+  "exampleSentence": "사업에 성공해요.",
+  "romanization": "seonggonghada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "실패하다",
+  "translation": "to fail",
+  "exampleSentence": "실패해도 괜찮아요.",
+  "romanization": "silpaehada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "극복하다",
+  "translation": "to overcome",
+  "exampleSentence": "어려움을 극복해요.",
+  "romanization": "geukbokhada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "인정하다",
+  "translation": "to admit",
+  "exampleSentence": "실수를 인정해요.",
+  "romanization": "injeonghada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "존중하다",
+  "translation": "to respect",
+  "exampleSentence": "서로 존중해요.",
+  "romanization": "jonjunghada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "배려하다",
+  "translation": "to be considerate",
+  "exampleSentence": "남을 배려해요.",
+  "romanization": "baeryeohada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "공감하다",
+  "translation": "to empathize",
+  "exampleSentence": "마음에 공감해요.",
+  "romanization": "gonggamhada",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "책임",
+  "translation": "responsibility",
+  "exampleSentence": "책임이 커요.",
+  "romanization": "chaegim",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "의무",
+  "translation": "duty",
+  "exampleSentence": "의무를 다해요.",
+  "romanization": "uimu",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "권리",
+  "translation": "right",
+  "exampleSentence": "권리를 지켜요.",
+  "romanization": "gwolli",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "평등",
+  "translation": "equality",
+  "exampleSentence": "평등이 중요해요.",
+  "romanization": "pyeongdeung",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "정의",
+  "translation": "justice",
+  "exampleSentence": "정의를 믿어요.",
+  "romanization": "jeongui",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "진실",
+  "translation": "truth",
+  "exampleSentence": "진실을 말해요.",
+  "romanization": "jinsil",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "거짓말",
+  "translation": "lie",
+  "exampleSentence": "거짓말하지 마세요.",
+  "romanization": "geojinmal",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "소문",
+  "translation": "rumor",
+  "exampleSentence": "소문을 믿지 마세요.",
+  "romanization": "somun",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "전통",
+  "translation": "tradition",
+  "exampleSentence": "전통을 지켜요.",
+  "romanization": "jeontong",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "미래",
+  "translation": "future",
+  "exampleSentence": "미래가 밝아요.",
+  "romanization": "mirae",
+  "difficulty": "advanced"
+ },
+ {
+  "language": "korean",
+  "word": "과거",
+  "translation": "past",
+  "exampleSentence": "과거를 잊지 마세요.",
+  "romanization": "gwageo",
+  "difficulty": "advanced"
+ }
+]
