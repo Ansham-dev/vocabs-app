@@ -27,8 +27,9 @@ Or double-click `index.html` — Explore works only when served (see message in 
 python vocab-app/build_vocab.py
 ```
 
-## Features (Memrise-style 🌱)
+## Features (Memrise-style 🌱 + Paris la Nuit 🗼)
 
+- 🗼 **Night Journey** (the wow) — 4241 words mapped onto 6 Paris districts (Montmartre, Café de Flore, Champs-Élysées, Gare du Nord, Île Saint-Louis, Quartier Latin). Master words to light each district and make the Eiffel Tower glow. Districts unlock as you progress
 - 🌱 **Learn** — plant 5 seeds at a time: see + hear → tap meaning → type → listening test
 - 🏋️ **Practice** — no-pressure exam (10/20/30 questions) in Voilà app style: tap meanings · listening · typing with accent bar (é è ç…). Mistakes don't hurt your plants
 - 💧 **Review** — water weakest words first, 10 mixed tests (tap / type / listen)

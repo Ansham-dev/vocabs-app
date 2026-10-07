@@ -15,6 +15,64 @@ def load(name):
 vocab = []
 seen = set()
 
+# ---- Paris districts: theme keywords first, gloss keywords second ----
+DISTRICTS = [
+    ("montmartre", ("greet", "polit", "introduc", "family", "famille", "people", "person",
+                    "describ", "appearance", "looks", "personality", "feelings", "feeling",
+                    "emotion", "friend", "identity", "nationality", "meeting", "visits",
+                    "invitations", "salutation")),
+    ("cafe", ("food", "drink", "meal", "restaurant", "caf", "kitchen", "cook", "eat",
+              "taste", "flavour", "flavor", "recipe", "shopping for food", "nourriture",
+              "repas", "boisson")),
+    ("champs", ("shop", "cloth", "colour", "color", "fashion", "money", "price", "number",
+                "quantit", "pay", "clothes", "vêtement", "couleur", "nombre", "magasin")),
+    ("gare", ("travel", "transport", "direction", "places", "city", "street", "hotel",
+              "station", "weather", "season", "nature", "time", "days", "month", "hour",
+              "date", "voyage", "ville", "temps", "météo", "saison", "vacances", "holiday",
+              "trip", "airport", "ticket")),
+    ("ile", ("house", "home", "furniture", "rent", "housework", "household", "room",
+             "body", "health", "doctor", "medical", "daily", "routine", "sleep",
+             "maison", "corps", "santé", "sante", "quotidien", "vie")),
+    ("latin", ("work", "job", "school", "educat", "media", "opinion", "culture",
+               "tradition", "news", "societ", "hobby", "sport", "leisure", "phone",
+               "message", "technolog", "science", "complaint", "problem", "sense",
+               "travail", "école", "ecole", "loisir", "opinion", "média", "media")),
+]
+# gloss (fr/en) keywords for words whose theme is just a part of speech
+GLOSS = {
+    "cafe": ("eat", "drink", "bread", "cheese", "wine", "coffee", "café", "cafe",
+             "restaurant", "cook", "kitchen", "meal", "breakfast", "lunch", "dinner",
+             "fruit", "meat", "fish", "cake", "thirst", "hunger", "manger", "boire",
+             "pain", "fromage", "restaurant", "cuisine"),
+    "gare": ("train", "métro", "metro", "bus", "taxi", "plane", "street", "road",
+             "bridge", "hotel", "ticket", "map", "travel", "trip", "airport",
+             "station", "rain", "sun", "snow", "wind", "sky", "cloud", "weather",
+             "pluie", "soleil", "neige", "rue", "gare", "billet", "voyage"),
+    "champs": ("shop", "store", "money", "price", "pay", "buy", "sell", "shirt",
+               "dress", "shoe", "cloth", "pocket", "cheap", "expensive",
+               "magasin", "prix", "acheter", "vendre", "argent"),
+    "montmartre": ("friend", "love", "man", "woman", "child", "hello", "goodbye",
+                   "thank", "please", "sorry", "happy", "sad", "smile", "ami",
+                   "amour", "merci", "bonjour", "homme", "femme", "enfant"),
+    "ile": ("house", "maison", "room", "bed", "door", "window", "sleep", "bath",
+            "sick", "doctor", "hospital", "pain", "health", "lit", "porte",
+            "fenêtre", "dormir", "malade", "médecin"),
+    "latin": ("work", "school", "book", "study", "music", "film", "phone",
+              "computer", "game", "sport", "art", "letter", "idea", "question",
+              "travail", "école", "livre", "musique", "sport", "idée"),
+}
+
+def classify(theme, fr, en):
+    t = (theme or "").lower()
+    for did, kws in DISTRICTS:
+        if any(k in t for k in kws):
+            return did
+    g = ((fr or "") + " " + (en or "")).lower()
+    for did, kws in GLOSS.items():
+        if any(k in g for k in kws):
+            return did
+    return None  # overheard words: dealt evenly across districts below
+
 def add(fr, en, ex="", exEn="", level="A1", source="", theme=""):
     fr = (fr or "").strip()
     en = (en or "").strip()
@@ -32,6 +90,7 @@ def add(fr, en, ex="", exEn="", level="A1", source="", theme=""):
         "level": level,
         "source": source,
         "theme": theme,
+        "district": classify(theme, fr, en),
     })
 
 # course.json: [{id, level, title, words:[{fr,en,ex,exEn}]}]
@@ -65,9 +124,17 @@ for e in load("delf-b1.json"):
     for w in e.get("items", []):
         add(w.get("fr"), w.get("en"), w.get("ex"), "", "B1", "DELF B1", theme)
 
+# Deal "overheard" words (no theme match) evenly across districts so every
+# district stays playable. Sorted for stable rebuilds.
+DIDS = [d for d, _ in DISTRICTS]
+left = sorted([w for w in vocab if not w["district"]], key=lambda w: w["fr"].lower())
+for i, w in enumerate(left):
+    w["district"] = DIDS[i % len(DIDS)]
+
 OUT.write_text(json.dumps(vocab, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"Wrote {len(vocab)} words -> {OUT}")
 # stats
 from collections import Counter
 print(Counter(v["level"] for v in vocab))
 print(Counter(v["source"] for v in vocab))
+print(Counter(v["district"] for v in vocab))
