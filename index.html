@@ -52,7 +52,11 @@ main{max-width:760px;margin:0 auto;padding:12px;min-height:70vh}
 .paris-meter .bar{height:12px;background:rgba(0,0,0,.5);border:1px solid var(--frame);border-radius:10px;overflow:hidden}
 .paris-meter .bar i{display:block;height:100%;background:linear-gradient(90deg,#5B8CFF,var(--gold));width:0%;transition:width .8s}
 .paris-meter small{color:#cdd6f4;font-size:12px}
-/* winding road */
+.badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0 2px}
+.bdg{width:52px;text-align:center;font-size:24px;filter:grayscale(1);opacity:.35}
+.bdg.got{filter:none;opacity:1}
+.bdg small{display:block;font-size:9px;color:var(--muted)}
+.bdg.got small{color:var(--gold)}
 .path{position:relative;margin-top:6px}
 .road{position:absolute;inset:0;width:100%;height:100%}
 .road path{fill:none;stroke:rgba(255,201,138,.4);stroke-width:2;stroke-dasharray:6 6}
@@ -63,6 +67,7 @@ main{max-width:760px;margin:0 auto;padding:12px;min-height:70vh}
   font-size:30px;cursor:pointer;position:relative}
 .pcirc.cur{border-color:var(--gold);box-shadow:0 0 22px 4px rgba(255,216,51,.55);animation:pulse 1.8s infinite}
 .pcirc.done{border-color:var(--leaf);box-shadow:0 0 16px 2px rgba(47,224,154,.5)}
+.pcirc.boss{border-color:var(--danger)}
 .pcirc.locked{opacity:.45;cursor:not-allowed}
 .pcirc .mini{position:absolute;bottom:-6px;right:-6px;font-size:18px;background:#0b0e15;border-radius:50%;padding:1px}
 .speech-bubble{position:absolute;top:-24px;background:var(--gold);color:#3a2500;font-size:11px;font-weight:800;
@@ -72,7 +77,6 @@ main{max-width:760px;margin:0 auto;padding:12px;min-height:70vh}
 .ptitle b{font-size:16px;display:block}
 .ptitle .sm{font-size:12px}
 .ptitle:disabled{cursor:not-allowed}
-/* district detail */
 .d-head{text-align:center}
 .d-head .big{font-size:54px}
 .d-head h2{margin:4px 0}
@@ -97,6 +101,7 @@ main{max-width:760px;margin:0 auto;padding:12px;min-height:70vh}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 .fb{background:rgba(245,241,232,.06);border:1px solid var(--frame);border-radius:var(--r-md);padding:12px 14px;margin:10px 0;font-size:15px}
 .fbline{font-weight:700;margin-top:8px}
+.combo{color:#ff9d3c;font-weight:900;animation:pop .3s ease}
 .row{display:flex;align-items:center;gap:10px}
 .circ{width:40px;height:40px;border-radius:50%;border:1px solid var(--frame);background:transparent;color:var(--ink);font-size:18px;cursor:pointer;flex:none}
 input[type=text]{width:100%;background:rgba(0,0,0,.35);border:1px solid var(--frame);border-radius:var(--r-md);
@@ -112,9 +117,6 @@ input[type=text]:focus{outline:none;border-color:var(--accent)}
 .hero{font-size:48px;margin:4px 0;text-align:center}
 .hero-title{font-size:22px;font-weight:800;text-align:center}
 .hero-sub{color:var(--muted);font-size:14px;margin:8px 0 4px;text-align:center;line-height:1.55}
-.lrow{display:flex;justify-content:space-between;align-items:center;width:100%;background:rgba(245,241,232,.04);
-  border:1px solid var(--frame);color:var(--ink);border-radius:var(--r-md);padding:13px 14px;font-size:15px;margin:8px 0;cursor:pointer;text-align:left}
-.lrow:hover{border-color:var(--accent)}
 .seg{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap;justify-content:center}
 .seg button{flex:1;min-width:70px}
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
@@ -126,6 +128,12 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
 .kbd-hint{color:var(--muted);font-size:12px;margin-top:8px;text-align:center}
 .pop{animation:pop .25s ease}
 @keyframes pop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* toast + confetti */
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#141a2e;border:2px solid var(--gold);
+  color:var(--ink);border-radius:14px;padding:10px 18px;font-weight:800;font-size:15px;z-index:99;animation:pop .25s ease;
+  box-shadow:0 8px 30px rgba(0,0,0,.6);max-width:90vw;text-align:center}
+.confetti{position:fixed;top:-12px;width:10px;height:14px;z-index:98;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
 @media(max-width:560px){.fr{font-size:26px}h1{font-size:16px}.eiffel{width:120px}}
 </style>
 </head>
@@ -174,12 +182,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
 <footer>Light up Paris, one word at a time 🗼✨ • progress saved in this browser • tap any word to hear it 🔊</footer>
 
 <script>
-/* ================= DATA + PROGRESS ================= */
+/* ================= DATA + PROGRESS (local only — no backend yet) ================= */
 let WORDS=[];
 const LS_S='vv-stats-v1', LS_M='vv-meta-v1';
 let stats={}; try{stats=JSON.parse(localStorage.getItem(LS_S)||'{}')}catch(e){stats={}}
-let meta={xp:0,day:{d:'',xp:0},streak:0,lastDay:'',best:0};
+let meta={xp:0,day:{d:'',xp:0},streak:0,lastDay:'',best:0,badges:[],parisBoom:false};
 try{Object.assign(meta,JSON.parse(localStorage.getItem(LS_M)||'{}'))}catch(e){}
+if(!Array.isArray(meta.badges))meta.badges=[];
 const $=id=>document.getElementById(id);
 const save=()=>{try{localStorage.setItem(LS_S,JSON.stringify(stats));localStorage.setItem(LS_M,JSON.stringify(meta))}catch(e){} paintHead();};
 const key=w=>w.fr+'|||'+w.en;
@@ -194,18 +203,36 @@ const DISTRICTS=[
   {id:'champs',e:'🛍️',name:'Champs-Élysées',tag:'Shopping, style & numbers',blurb:'Shop, count and charm.'},
   {id:'gare',e:'🚇',name:'Gare du Nord',tag:'Travel, city & time',blurb:'Never miss your train again.'},
   {id:'ile',e:'🏠',name:'Île Saint-Louis',tag:'Home, body & daily life',blurb:'Feel at home en français.'},
-  {id:'latin',e:'💼',name:'Quartier Latin',tag:'Work, school & ideas',blurb:'Debate, study, create.'},
+  {id:'latin',e:'💼',name:'Quartier Latin',tag:'Work, school & ideas — boss zone',blurb:'Debate, study, create. The final challenge.'},
 ];
+const BADGES={planter:['🌱','Planter'],gardener:['💧','Gardener'],speedster:['⚡','Speedster'],
+  perfect:['💯','Perfect'],streak3:['🔥','On fire'],nightowl:['🦉','Night Owl'],
+  illuminator:['🗼','Illuminator'],scholar:['🎓','Scholar']};
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;
+  document.body.appendChild(t);setTimeout(()=>t.remove(),2600);}
+function award(id){if(meta.badges.includes(id))return;meta.badges.push(id);save();
+  const b=BADGES[id];toast(`🏆 Badge: ${b[0]} ${b[1]}!`);}
+function boom(){const colors=['#FFD833','#5B8CFF','#2FE09A','#FF7A92','#FFC98A','#A06BFF'];
+  for(let i=0;i<80;i++){const c=document.createElement('div');c.className='confetti';
+    c.style.left=(Math.random()*100)+'vw';c.style.background=colors[i%colors.length];
+    c.style.animationDuration=(1.6+Math.random()*1.6)+'s';c.style.animationDelay=(Math.random()*.5)+'s';
+    if(i%3===0)c.style.borderRadius='50%';document.body.appendChild(c);setTimeout(()=>c.remove(),3600);}}
 const dWords=id=>WORDS.filter(w=>w.district===id);
 const dLit=id=>{const w=dWords(id);return w.length?Math.round(w.filter(x=>st(key(x)).s>=3).length/w.length*100):0};
+const dDiff=id=>{const w=dWords(id);if(!w.length)return '';
+  const b1=w.filter(x=>x.level==='B1').length/w.length;
+  return b1<.3?'🟢 Easy start':b1<.65?'🟡 Getting serious':'🔴 Boss zone';};
 const dUnlocked=i=>i===0||dLit(DISTRICTS[i-1].id)>=UNLOCK_AT;
 const parisLit=()=>WORDS.length?Math.round(WORDS.filter(w=>st(key(w)).s>=3).length/WORDS.length*100):0;
-let scope=null; // district id or null
+let scope=null;
 const today=()=>new Date().toISOString().slice(0,10);
 function addXP(n){meta.xp+=n;const t=today();
   if(meta.day.d!==t)meta.day={d:t,xp:0};meta.day.xp+=n;
   if(meta.lastDay!==t){const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
     meta.streak=(meta.lastDay===y)?(meta.streak||0)+1:1;meta.lastDay=t;}
+  if(meta.streak>=3)award('streak3');
+  const h=new Date().getHours();if(h>=21||h<5)award('nightowl');
+  if(meta.xp>=1000)award('scholar');
   save();}
 function rank(){let r=RANKS[0];for(const x of RANKS)if(meta.xp>=x[0])r=x;return r;}
 function paintHead(){$('hXp').textContent=meta.xp;$('hStreak').textContent=meta.streak||0;
@@ -242,6 +269,7 @@ function distractors(w,field,n=3){
                    ...shuffle(pool().filter(x=>x[field]&&key(x)!==key(w)))]){
     if(out.length>=n)break;if(!out.includes(x[field]))out.push(x[field]);}
   return out;}
+function comboTag(c){return c>=3?` <span class="combo">🔥x${c}</span>`:'';}
 
 /* ================= JOURNEY 🗼 ================= */
 function eiffelSVG(pct){
@@ -267,7 +295,10 @@ function parisTime(){const n=new Date(),hh=String(n.getHours()).padStart(2,'0'),
 function renderJourney(){
   if(!$('p-journey').classList.contains('on'))return;
   const pct=parisLit(),T=parisTime();
+  if(pct>=100&&!meta.parisBoom){meta.parisBoom=true;save();boom();}
   let stars='';for(let i=0;i<70;i++){stars+=`<span class="star" style="left:${(Math.random()*100).toFixed(1)}%;top:${(Math.random()*55).toFixed(1)}%;animation-delay:${(Math.random()*3).toFixed(1)}s"></span>`;}
+  const shelf=Object.keys(BADGES).map(id=>{const got=meta.badges.includes(id);
+    return `<div class="bdg${got?' got':''}" title="${BADGES[id][1]}">${BADGES[id][0]}<small>${BADGES[id][1]}</small></div>`}).join('');
   const N=DISTRICTS.length,ROW=104,H=N*ROW;
   const xs=DISTRICTS.map((_,k)=>k%2===0?20:80);
   let d=`M ${xs[0]} ${ROW/2}`;
@@ -275,11 +306,11 @@ function renderJourney(){
     d+=` C ${xs[k]} ${ym}, ${xs[k+1]} ${ym}, ${xs[k+1]} ${y1}`;}
   const nodes=DISTRICTS.map((D,i)=>{
     const lit=dLit(D.id),open=dUnlocked(i),done=lit>=DONE_AT,isNext=open&&!done;
-    const total=dWords(D.id).length;
-    const cls=!open?'locked':done?'done':isNext?'cur':'';
+    const total=dWords(D.id).length,boss=i===N-1;
+    const cls=!open?'locked':done?'done':(isNext?'cur':'')+(boss&&open&&!done?' boss':'');
     const icon=!open?'🔒':done?'🌸':D.e;
     const sub=!open?`Light up ${DISTRICTS[i-1].name} to ${UNLOCK_AT}% to unlock`
-      :done?`${lit}% lit — Terminated ✨`:`${lit}% lit · ${total} words${isNext?' — continue!':''}`;
+      :done?`${lit}% lit — Terminated ✨`:`${lit}% lit · ${total} words · ${dDiff(D.id)}${isNext?' — continue!':''}`;
     return `<div class="pnode ${i%2?'r':''}">
       <div class="pnode-circ">${isNext?'<span class="speech-bubble">Ce soir, on étudie ici !</span>':''}
         <button class="pcirc pop ${cls}" ${open?'':'disabled'} onclick="openDistrict('${D.id}')" aria-label="${esc(D.name)}">${icon}
@@ -294,6 +325,7 @@ function renderJourney(){
     ${eiffelSVG(pct)}
     <div class="paris-meter"><div class="bar"><i style="width:${pct}%"></i></div>
     <small>🗼 ${pct}% of Paris glowing ${pct>=100?'— MAGNIFIQUE! 🎆':''}</small></div>
+    <div class="badges">${shelf}</div>
   </div>
   <div class="path"><svg class="road" viewBox="0 0 100 ${H}" preserveAspectRatio="none"><path d="${d}"/></svg>${nodes}</div>
   ${pct>=100?'<div class="card pop" style="text-align:center">🎆 <b>Toute la ville brille!</b> You lit up all of Paris — legendary.</div>':''}`;
@@ -308,7 +340,7 @@ window.openDistrict=id=>{
   $('journeyHome').style.display='none';$('journeySess').style.display='block';
   $('journeySess').innerHTML=`<div class="center">
   <div class="row"><button class="circ" onclick="renderJourney()" aria-label="Back">←</button>
-  <span class="sm">${D.e} ${esc(D.name)} · 🗼 ${c.lit}% lit</span></div>
+  <span class="sm">${D.e} ${esc(D.name)} · 🗼 ${c.lit}% lit · ${dDiff(id)}</span></div>
   <div class="d-head"><div class="big">${D.e}</div><h2>${esc(D.name)}</h2>
   <div class="sm">${esc(D.tag)} — ${esc(D.blurb)}</div></div>
   <div class="score"><div><b>${c.fresh}</b><span>new 🌱</span></div><div><b>${c.growing}</b><span>growing 🌿</span></div><div><b>${c.done}</b><span>mastered 🌸</span></div></div>
@@ -328,7 +360,7 @@ window.playDistrict=(id,mode)=>{
   else{document.querySelector('[data-tab="practice"]').classList.add('on');$('p-practice').classList.add('on');
     pracN=10;goPractice();}};
 
-/* ================= SHARED QUESTION PIECES ================= */
+/* ================= SHARED PIECES ================= */
 const ACCENTS=['à','â','ç','é','è','ê','ë','î','ï','ô','ù','û','ü','æ','œ'];
 function accentBar(inputId){return `<div class="accents">${ACCENTS.map(a=>`<button onclick="insAccent('${inputId}','${a}')">${a}</button>`).join('')}</div>`}
 window.insAccent=(id,ch)=>{const i=$(id);if(!i)return;const s=i.selectionStart||i.value.length;
@@ -339,7 +371,7 @@ function scopeTag(){if(!scope)return '';const D=DISTRICTS.find(x=>x.id===scope);
 let S=null;
 const XPW={pick:10,tap:10,listen:15,spell:20};
 function startSession(mode,words,el){
-  S={mode,words,need:{},order:[],ok:0,total:0,xp0:meta.xp,el,planted:0,map:{}};
+  S={mode,words,need:{},order:[],ok:0,total:0,combo:0,best:0,xp0:meta.xp,el,planted:0,map:{}};
   for(const w of words){const k=key(w);
     if(mode==='learn'){S.need[k]=3;S[k+'_plan']=shuffle(['pick','tap',Math.random()<.5?'spell':'listen']);}
     else{S.need[k]=1;S[k+'_plan']=shuffle(['pick','tap','spell','listen']);}
@@ -349,7 +381,7 @@ function startSession(mode,words,el){
   if(mode==='learn'){S.teach=[...words];showTeach();}else nextTest();}
 function sessHead(label){const done=S.words.length-S.order.length;
   return `<div class="row"><button class="circ" onclick="backHome('${S.el}')" aria-label="Back">←</button>
-  <span class="sm">${label}${scopeTag()} · ${done+1}/${S.words.length} · ✓ ${S.ok}</span></div>`;}
+  <span class="sm">${label}${scopeTag()} · ${done+1}/${S.words.length} · ✓ ${S.ok}${comboTag(S.combo)}</span></div>`;}
 function showTeach(){
   const w=S.teach[0],i=S.words.length-S.teach.length+1;
   $(S.el+'Sess').innerHTML=`<div class="center"><div class="row"><button class="circ" onclick="backHome('${S.el}')" aria-label="Back">←</button>
@@ -413,14 +445,16 @@ function tListen(w){const opts=shuffle([w.en,...distractors(w,'en')]);S.answer=w
 function grade(ok){
   const k=S.order[0],w=S.map[k],s=st(key(w)),type=(S[k+'_plan']||['pick'])[0];
   S.total++;
-  if(ok){S.ok++;s.ok++;s.s=Math.min(5,s.s+1);s.last=Date.now();
-    const xp=XPW[type]||10;addXP(xp);
-    if($('fb')&&!$('fb').innerHTML)$('fb').innerHTML=`<div class="fb"><div class="fbline" style="color:var(--leaf)">Bravo ! +${xp} XP ${s.s>=5?'🌸':STAGE_E[s.s]}</div></div>`;
+  if(ok){S.ok++;S.combo++;S.best=Math.max(S.best,S.combo);
+    s.ok++;s.s=Math.min(5,s.s+1);s.last=Date.now();
+    const xp=(XPW[type]||10)+Math.min(S.combo,10);addXP(xp);
+    if($('fb')&&!$('fb').innerHTML)$('fb').innerHTML=`<div class="fb"><div class="fbline" style="color:var(--leaf)">Bravo ! +${xp} XP ${s.s>=5?'🌸':STAGE_E[s.s]}${comboTag(S.combo)}</div></div>`;
+    if(w.district&&dLit(w.district)===100&&!meta.badges.includes('illuminator')){award('illuminator');boom();toast('🗼 District fully lit!');}
     S.need[k]--;S[k+'_plan'].shift();S.order.shift();
     if(S.need[k]>0){if(!S[k+'_plan'].length)S[k+'_plan']=shuffle(['pick','tap','spell','listen']);S.order.push(k);}
     else if(S.mode==='learn')S.planted++;}
-  else{s.no++;s.s=Math.max(0,s.s-1);s.last=Date.now();if(s.no>=2)s.hard=true;save();
-    if($('fb')&&!$('fb').innerHTML)$('fb').innerHTML=`<div class="fb"><b>${esc(w.fr)}</b> = ${esc(w.en)}${w.ex?`<div class="sm">“${esc(w.ex)}”</div>`:''}<div class="fbline" style="color:var(--danger)">${STAGE_E[s.s]} ${stageName(s.s)}</div></div>
+  else{S.combo=0;s.no++;s.s=Math.max(0,s.s-1);s.last=Date.now();if(s.no>=2)s.hard=true;save();
+    if($('fb')&&!$('fb').innerHTML)$('fb').innerHTML=`<div class="fb"><b>${esc(w.fr)}</b> = ${esc(w.en)}${w.ex?`<div class="sm">“${esc(w.ex)}”</div>`:''}<div class="fbline" style="color:var(--danger)">Combo lost · ${STAGE_E[s.s]} ${stageName(s.s)}</div></div>
     <button class="cta pulse" onclick="contNext()">Next →</button>`;
     else if($('fb'))$('fb').insertAdjacentHTML('beforeend',`<button class="cta pulse" onclick="contNext()">Next →</button>`);
     S[k+'_plan'].push(S[k+'_plan'].shift());S.order.push(S.order.shift());
@@ -432,8 +466,10 @@ function renderJourneyLite(){if($('p-journey').classList.contains('on'))renderJo
 function endSession(){
   const xp=meta.xp-S.xp0,acc=S.total?Math.round(S.ok/S.total*100):0;
   const mastered=S.words.filter(w=>st(key(w)).s>=5).length;
+  if(S.mode==='learn')award('planter');else award('gardener');
+  if(S.best>=8)toast(`🔥 Best combo x${S.best} — on fire!`);
   $(S.el+'Sess').innerHTML=`<div class="center"><h1>${S.mode==='learn'?'Session complete! 🌱':'Review complete! 💧'}</h1>
-  <div class="score"><div><b>${S.ok}/${S.total}</b><span>correct</span></div><div><b>+${xp}</b><span>XP</span></div><div><b>${mastered}</b><span>mastered 🌸</span></div></div>
+  <div class="score"><div><b>${S.ok}/${S.total}</b><span>correct</span></div><div><b>+${xp}</b><span>XP</span></div><div><b>x${S.best}</b><span>best combo</span></div></div>
   <p class="sm" style="margin:8px 0">${S.mode==='learn'?'You planted '+S.words.length+' seeds — come back to water them 💧!':acc>=80?'Excellent watering! 🌳':'Keep watering — they are still thirsty 💧.'}</p>
   <button class="cta pulse" onclick="backHome('${S.el}')">Continue →</button></div>`;
   S=null;scope=null;renderHomes();}
@@ -453,11 +489,11 @@ window.setPracN=n=>{pracN=n;renderPracHome();};
 window.goPractice=()=>{
   const words=shuffle(pool()).slice(0,Math.min(pracN,pool().length));
   if(words.length<4)return;
-  P={items:words.map(w=>({w,t:shuffle(['pick','listen','type'])[0]})),i:0,score:0,typed:'',fb:null,done:false,xp0:meta.xp};
+  P={items:words.map(w=>({w,t:shuffle(['pick','listen','type'])[0]})),i:0,score:0,combo:0,best:0,typed:'',fb:null,done:false,xp0:meta.xp};
   $('pracHome').style.display='none';$('pracSess').style.display='block';
   renderPrac();};
 function pracHead(){return `<div class="row"><button class="circ" onclick="exitPractice()" aria-label="Back">←</button>
-  <span class="sm">Practice${scopeTag()} · ${P.i+1}/${P.items.length} · ✓ ${P.score}</span></div>`;}
+  <span class="sm">Practice${scopeTag()} · ${P.i+1}/${P.items.length} · ✓ ${P.score}${comboTag(P.combo)}</span></div>`;}
 window.exitPractice=()=>{P=null;scope=null;$('pracSess').style.display='none';$('pracSess').innerHTML='';renderPracHome();renderHomes();};
 function renderPrac(){
   if(P.i>=P.items.length)return endPractice();
@@ -481,32 +517,38 @@ function renderPrac(){
     window._tw=w.fr;setTimeout(()=>speak(w.fr),350);}
   else{P.w=w;
     h+=`<div class="card pop"><div class="sm">Type it in French</div><div class="fr" style="font-size:26px">${esc(w.en)}</div>
-    ${w.ex?`<div class="sm">Hint: “${esc(w.ex)}”</div>`:''}${P.fb?`<div class="fbline">${P.fb.ok?'Bravo !':`C'était : ${esc(w.fr)}`}</div>`:''}</div>`;
+    ${w.ex?`<div class="sm">Hint: “${esc(w.ex)}”</div>`:''}${P.fb?`<div class="fbline">${P.fb.ok?'Bravo !':'C&apos;était : '+esc(w.fr)}</div>`:''}</div>`;
     if(!P.fb)h+=`<input type="text" id="ptin" autocomplete="off" autocapitalize="off" placeholder="écrivez…" value="${esc(P.typed)}">${accentBar('ptin')}
     <button class="cta pulse" onclick="pracCheck()">Check</button>`;
     else h+=pracNextBtn();
     h+=`</div>`;$('pracSess').innerHTML=h;
     const inp=$('ptin');if(inp){inp.focus();inp.onkeydown=e=>{if(e.key==='Enter')pracCheck()};}}
 }
-function pracFb(w){return P.fb.ok?`<div class="fb"><div class="fbline" style="color:var(--leaf)">Bravo ! ✓</div></div>`
-  :`<div class="fb">${esc(w.fr)} = ${esc(w.en)}${w.ex?`<div class="sm">“${esc(w.ex)}”</div>`:''}</div>`;}
+function pracFb(w){return P.fb.ok?`<div class="fb"><div class="fbline" style="color:var(--leaf)">Bravo ! +${P.lastXp||5} XP${comboTag(P.combo)}</div></div>`
+  :`<div class="fb">${esc(w.fr)} = ${esc(w.en)}${w.ex?`<div class="sm">“${esc(w.ex)}”</div>`:''}<div class="fbline" style="color:var(--danger)">Combo lost</div></div>`;}
 function pracNextBtn(){return `<button class="cta pulse" onclick="pracNext()">${P.i+1>=P.items.length?'See result':'Next →'}</button>`;}
 window.pracPick=el=>{
   if(!P||P.fb)return;const ok=el.dataset.v===P.answer;
   [...document.querySelectorAll('#pracSess .opt')].forEach(b=>{b.disabled=true;
     if(b.dataset.v===P.answer)b.classList.add('ok');});
   if(!ok)el.classList.add('no');
-  P.fb={ok};if(ok){P.score++;addXP(5);}
+  P.fb={ok};
+  if(ok){P.score++;P.combo++;P.best=Math.max(P.best,P.combo);P.lastXp=5+Math.min(P.combo,10);addXP(P.lastXp);}
+  else{P.combo=0;P.lastXp=0;}
   $('pfb').innerHTML=pracFb(P.w)+pracNextBtn();};
 window.pracCheck=()=>{
   if(!P||P.fb)return;const v=$('ptin').value;P.typed=v;
-  const ok=norm(v)===norm(P.w.fr);P.fb={ok};if(ok){P.score++;addXP(5);}
+  const ok=norm(v)===norm(P.w.fr);P.fb={ok};
+  if(ok){P.score++;P.combo++;P.best=Math.max(P.best,P.combo);P.lastXp=5+Math.min(P.combo,10);addXP(P.lastXp);}
+  else{P.combo=0;P.lastXp=0;}
   renderPrac();};
 window.pracNext=()=>{if(!P)return;P.i++;P.fb=null;P.typed='';renderPrac();};
 function endPractice(){
-  const xp=meta.xp-P.xp0,n=P.items.length,pass=P.score>=Math.ceil(n*0.75);
+  const xp=meta.xp-P.xp0,n=P.items.length,acc=n?Math.round(P.score/n*100):0;
+  const pass=P.score>=Math.ceil(n*0.75);
+  if(acc===100)award('perfect');
   $('pracSess').innerHTML=`<div class="center"><h1>${pass?'Practice passed! 🎉':'Not yet… 💪'}</h1>
-  <div class="score"><div><b>${P.score}/${n}</b><span>score</span></div><div><b>+${xp}</b><span>XP</span></div></div>
+  <div class="score"><div><b>${P.score}/${n}</b><span>score</span></div><div><b>+${xp}</b><span>XP</span></div><div><b>x${P.best}</b><span>best combo</span></div></div>
   <p class="sm" style="margin:8px 0">${pass?'Super travail !':'You need '+Math.ceil(n*0.75)+'/'+n+' to pass — practice makes perfect !'}</p>
   <button class="cta pulse" onclick="goPractice()">Practice again</button>
   <button class="cta ghost" onclick="exitPractice()">Back to menu</button></div>`;
@@ -516,17 +558,17 @@ function endPractice(){
 let SP=null;
 function startSpeed(){
   const p=shuffledReview(200);if(p.length<4)return;
-  SP={q:p,i:0,ok:0,xp0:meta.xp,t:60};
+  SP={q:p,i:0,ok:0,combo:0,xp0:meta.xp,t:60};
   $('speedHome').style.display='none';$('speedSess').style.display='block';
   nextSpeed();
-  SP.timer=setInterval(()=>{SP.t--;const n=$('speedSess').querySelector('.speednum');if(n)n.textContent=SP.t+'s';
+  SP.timer=setInterval(()=>{if(!SP)return;SP.t--;const n=$('speedSess').querySelector('.speednum');if(n)n.textContent=SP.t+'s';
     if(SP.t<=0){clearInterval(SP.timer);endSpeed();}},1000);}
 window.startSpeed=startSpeed;
 function nextSpeed(){
   if(!SP)return;const w=SP.q[SP.i%SP.q.length];SP.i++;SP.cur=w;
   const opts=shuffle([w.en,...distractors(w,'en')].slice(0,4));
   $('speedSess').innerHTML=`<div class="center"><div class="row"><button class="circ" onclick="backSpeed()" aria-label="Back">←</button>
-  <span class="sm">⚡ Speed · ✓ ${SP.ok} · +${meta.xp-SP.xp0} XP</span></div>
+  <span class="sm">⚡ Speed · ✓ ${SP.ok} · +${meta.xp-SP.xp0} XP${comboTag(SP.combo)}</span></div>
   <div class="fr speednum" style="text-align:center;color:var(--sun)">${SP.t}s</div>
   <div class="card pop"><div class="fr" style="font-size:28px">${esc(w.fr)}</div></div>
   ${opts.map(o=>`<button class="opt pop" onclick="speedPick(this)">${esc(o)}</button>`).join('')}</div>`;
@@ -534,11 +576,14 @@ function nextSpeed(){
   SP.ans=w.en;}
 window.speedPick=el=>{
   if(!SP)return;const ok=el.dataset.v===SP.ans;
-  if(ok){SP.ok++;addXP(5);const s=st(key(SP.cur));s.ok++;s.s=Math.min(5,s.s+1);s.last=Date.now();save();}
+  if(ok){SP.ok++;SP.combo++;addXP(5+Math.min(SP.combo,10));
+    const s=st(key(SP.cur));s.ok++;s.s=Math.min(5,s.s+1);s.last=Date.now();save();}
+  else SP.combo=0;
   nextSpeed();};
 window.backSpeed=()=>{if(SP)clearInterval(SP.timer);SP=null;scope=null;$('speedSess').style.display='none';renderHomes();};
 function endSpeed(){
   const xp=meta.xp-SP.xp0;if(SP.ok>(meta.best||0)){meta.best=SP.ok;save();}
+  if(SP.ok>=15)award('speedster');
   $('speedSess').innerHTML=`<div class="center"><h1>Time's up! ⚡</h1>
   <div class="score"><div><b>${SP.ok}</b><span>correct</span></div><div><b>+${xp}</b><span>XP</span></div><div><b>${meta.best}</b><span>best</span></div></div>
   <button class="cta pulse" onclick="startSpeed()">Go again ⚡</button>

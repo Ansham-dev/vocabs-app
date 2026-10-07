@@ -124,12 +124,21 @@ for e in load("delf-b1.json"):
     for w in e.get("items", []):
         add(w.get("fr"), w.get("en"), w.get("ex"), "", "B1", "DELF B1", theme)
 
-# Deal "overheard" words (no theme match) evenly across districts so every
-# district stays playable. Sorted for stable rebuilds.
-DIDS = [d for d, _ in DISTRICTS]
+# Deal "overheard" words (no theme match) by LEVEL so districts form a
+# difficulty curve: Montmartre stays easy A1, Quartier Latin turns B1-hard.
+# Sorted for stable rebuilds.
+DEAL = {
+    "A1": ["montmartre", "cafe", "champs"],
+    "A2": ["cafe", "champs", "gare", "ile"],
+    "B1": ["gare", "ile", "latin"],
+}
 left = sorted([w for w in vocab if not w["district"]], key=lambda w: w["fr"].lower())
-for i, w in enumerate(left):
-    w["district"] = DIDS[i % len(DIDS)]
+from collections import defaultdict
+di = defaultdict(int)
+for w in left:
+    lane = DEAL.get(w["level"], [d for d, _ in DISTRICTS])
+    w["district"] = lane[di[w["level"]] % len(lane)]
+    di[w["level"]] += 1
 
 OUT.write_text(json.dumps(vocab, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"Wrote {len(vocab)} words -> {OUT}")

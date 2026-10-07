@@ -29,7 +29,8 @@ python vocab-app/build_vocab.py
 
 ## Features (Memrise-style 🌱 + Paris la Nuit 🗼)
 
-- 🗼 **Night Journey** (the wow) — 4241 words mapped onto 6 Paris districts (Montmartre, Café de Flore, Champs-Élysées, Gare du Nord, Île Saint-Louis, Quartier Latin). Master words to light each district and make the Eiffel Tower glow. Districts unlock as you progress
+- 🗼 **Night Journey** (the wow) — 4241 words mapped onto 6 Paris districts with a real difficulty curve: 🟢 Montmartre/Café (easy A1 start) → 🟡 Champs/Gare (getting serious) → 🔴 Île/Latin (B1 boss zone). Master words to light each district and make the Eiffel Tower glow. Districts unlock as you progress
+- 🔥 **Game juice** — combo multiplier in every session (streak correct answers for bonus XP), 8 collectible badges (Planter, Speedster, Night Owl, Illuminator…), confetti when a district hits 100%, best-combo stats on every result screen
 - 🌱 **Learn** — plant 5 seeds at a time: see + hear → tap meaning → type → listening test
 - 🏋️ **Practice** — no-pressure exam (10/20/30 questions) in Voilà app style: tap meanings · listening · typing with accent bar (é è ç…). Mistakes don't hurt your plants
 - 💧 **Review** — water weakest words first, 10 mixed tests (tap / type / listen)
