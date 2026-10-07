@@ -27,10 +27,12 @@ Or double-click `index.html` — Explore works only when served (see message in 
 python vocab-app/build_vocab.py
 ```
 
-## Features
+## Features (Memrise-style 🌱)
 
-- 📚 **Explore** — search FR/EN, filter by level + source + learned status, listen 🔊 (built-in voice), mark known ☆
-- 🃏 **Flashcards** — flip cards, shuffle, hide-known, prev/next, progress bar, auto-saves
-- 🎯 **Quiz** — 4-choice FR→EN / EN→FR, score + streak + best, auto-pronounces each word
-- Progress (`known` words + quiz best) saved in `localStorage` — no account needed
-- Mobile-friendly, offline (except voices come from the OS/browser)
+- 🌱 **Learn** — plant 5 seeds at a time: see + hear → tap meaning → type → listening test
+- 💧 **Review** — water weakest words first, 10 mixed tests (tap / type / listen)
+- ⚡ **Speed review** — 60-second rapid-fire round with personal best
+- 🔥 **Difficult words** — mistakes land here automatically for focused training
+- 🌸 **Growth system** — every word grows Seed → Sprout → Growing → Mastered with XP, ranks (Touriste → Immortel), daily 100 XP goal ring + day streak
+- 📚 **Words** — search all 4241 words by level + growth stage, listen 🔊, flag hard ones
+- Progress saved in `localStorage` — no account needed. Accent-insensitive typing ("cafe" = "café")
