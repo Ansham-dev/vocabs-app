@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "@/lib/mongodb";
 import { User } from "@/models/User";
 import {
   authCookieOptions,
@@ -8,6 +7,7 @@ import {
   signToken,
   validateCredentials,
 } from "@/lib/auth";
+import { withDB } from "@/lib/api";
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: valid.error }, { status: 400 });
   }
 
-  await connectDB();
+  return withDB(async () => {
   const existing = await User.findOne({ email: valid.email }).lean();
   if (existing) {
     return NextResponse.json(
@@ -50,4 +50,5 @@ export async function POST(req: NextRequest) {
   );
   res.cookies.set(AUTH_COOKIE, await signToken(String(user._id)), authCookieOptions());
   return res;
+  });
 }

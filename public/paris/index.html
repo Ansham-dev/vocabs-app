@@ -640,7 +640,14 @@ function renderWords(){
 ['wq','wl','ws','wd'].forEach(id=>$(id).addEventListener('input',renderWords));
 
 /* ================= LOAD ================= */
-fetch('vocab.json').then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+async function loadWords(){
+  // Works from /, /paris (rewrite), /paris/index.html, or plain file server.
+  for (const u of ['vocab.json','/paris/vocab.json']){
+    try{const r=await fetch(u);if(r.ok)return await r.json();}catch(e){}
+  }
+  throw 0;
+}
+loadWords().then(d=>{
   WORDS=d;paintHead();renderHomes();
 }).catch(()=>{document.querySelector('main').innerHTML='<div class="panel on"><div class="center"><div class="hero">⚠️</div><div class="hero-sub">Could not load <b>vocab.json</b>.<br>Serve this folder:<br><code>python -m http.server 8080</code><br>then open <b>http://localhost:8080</b></div></div></div>';});
 </script>

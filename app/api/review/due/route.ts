@@ -1,14 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
-import { connectDB } from "@/lib/mongodb";
 import { Card } from "@/models/Card";
 import { ReviewHistory } from "@/models/ReviewHistory";
 import { getUserIdFromRequest } from "@/lib/auth";
+import { withDB } from "@/lib/api";
 
 // GET /api/review/due?deckId=...&limit=20
 // Cards due now (never reviewed, or nextReviewDate passed), overdue first.
 // Requires login — review state is per user.
 export async function GET(req: NextRequest) {
+  return withDB(async () => {
   const userId = await getUserIdFromRequest(req);
   if (!userId) {
     return NextResponse.json(
@@ -25,7 +26,6 @@ export async function GET(req: NextRequest) {
     50
   );
 
-  await connectDB();
   const cards = await Card.find({ deckId }).lean();
   const histories = await ReviewHistory.find({
     userId,
@@ -63,5 +63,6 @@ export async function GET(req: NextRequest) {
       };
     }),
     totalDue: due.length,
+  });
   });
 }

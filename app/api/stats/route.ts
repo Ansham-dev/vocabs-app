@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
-import { connectDB } from "@/lib/mongodb";
 import { ReviewHistory } from "@/models/ReviewHistory";
 import { getUserIdFromRequest } from "@/lib/auth";
+import { withDB } from "@/lib/api";
 
 const WINDOW_DAYS = 120;
 
@@ -11,11 +11,11 @@ const WINDOW_DAYS = 120;
 // counting today-or-yesterday as the anchor (so a user reviewing daily
 // doesn't lose the streak before today's first review).
 export async function GET(req: NextRequest) {
+  return withDB(async () => {
   const userId = await getUserIdFromRequest(req);
   if (!userId) {
     return NextResponse.json({ error: "Log in to see stats." }, { status: 401 });
   }
-  await connectDB();
 
   const since = new Date(Date.now() - WINDOW_DAYS * 24 * 60 * 60 * 1000);
   const rows = await ReviewHistory.aggregate<{
@@ -69,6 +69,7 @@ export async function GET(req: NextRequest) {
     streak,
     totalCardStates: totalAgg[0]?.total ?? 0,
     reviewsByDay: days,
+  });
   });
 }
 

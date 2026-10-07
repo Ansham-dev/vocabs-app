@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import mongoose from "mongoose";
-import { connectDB } from "@/lib/mongodb";
 import { ReviewHistory } from "@/models/ReviewHistory";
 import { getUserIdFromRequest } from "@/lib/auth";
 import { assertGrade, INITIAL_STATE, reviewCard } from "@/lib/sm2";
+import { withDB } from "@/lib/api";
 
 // POST /api/review { cardId, grade } -> runs SM-2, upserts ReviewHistory.
 export async function POST(req: NextRequest) {
+  return withDB(async () => {
   const userId = await getUserIdFromRequest(req);
   if (!userId) {
     return NextResponse.json({ error: "Log in to save reviews." }, { status: 401 });
@@ -31,7 +32,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  await connectDB();
   const now = new Date();
   const existing = await ReviewHistory.findOne({ userId, cardId });
   const prev = existing
@@ -65,5 +65,6 @@ export async function POST(req: NextRequest) {
       repetitions: next.repetitions,
       nextReviewDate: next.nextReviewDate.toISOString(),
     },
+  });
   });
 }

@@ -13,6 +13,21 @@ import type { DayCount, DeckInfo, DueCard, SessionUser } from "./components/type
 
 type Grade = "again" | "hard" | "good" | "easy";
 
+// Server /api/* errors carry a human `hint` — surface it instead of a dead end.
+async function decksErrorMessage(e: unknown): Promise<string> {
+  const fallback =
+    "Could not load decks. The database may be waking up — wait a few seconds and retry.";
+  if (e instanceof Response) {
+    try {
+      const d = (await e.json()) as { error?: string; hint?: string };
+      if (d?.hint) return `${d.error ?? "Could not load decks."} ${d.hint}`;
+    } catch {
+      /* fall through */
+    }
+  }
+  return fallback;
+}
+
 const GRADE_BUTTONS: { grade: Grade; label: string; hint: string; cls: string }[] = [
   { grade: "again", label: "Again", hint: "1", cls: "bg-red-600 hover:bg-red-700" },
   { grade: "hard", label: "Hard", hint: "2", cls: "bg-orange-500 hover:bg-orange-600" },
@@ -43,12 +58,12 @@ export default function Home() {
   const refreshDecks = useCallback(async () => {
     try {
       const res = await fetch("/api/decks");
-      if (!res.ok) throw new Error("decks request failed");
+      if (!res.ok) throw res;
       const data = await res.json();
       setDecks(data.decks);
       setDecksError(null);
-    } catch {
-      setDecksError("Could not load decks. Check MONGODB_URI and run npm run seed.");
+    } catch (e) {
+      setDecksError(await decksErrorMessage(e));
     }
   }, []);
 
@@ -78,18 +93,16 @@ export default function Home() {
 
     fetch("/api/decks")
       .then(async (res) => {
-        if (!res.ok) throw new Error("decks request failed");
+        if (!res.ok) throw res;
         const data = await res.json();
         if (!cancelled) {
           setDecks(data.decks);
           setDecksError(null);
         }
       })
-      .catch(() => {
+      .catch(async (e) => {
         if (!cancelled) {
-          setDecksError(
-            "Could not load decks. Check MONGODB_URI and run npm run seed."
-          );
+          setDecksError(await decksErrorMessage(e));
         }
       });
 
@@ -246,9 +259,15 @@ export default function Home() {
       )}
 
       {decksError ? (
-        <p className="rounded-xl bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">
-          {decksError}
-        </p>
+        <div className="rounded-xl bg-red-50 p-4 text-sm text-red-700 dark:bg-red-950 dark:text-red-300">
+          <p>{decksError}</p>
+          <button
+            onClick={refreshDecks}
+            className="mt-2 rounded-full border border-current px-4 py-1.5 text-sm font-medium"
+          >
+            Retry
+          </button>
+        </div>
       ) : (
         <DeckPicker
           decks={decks}

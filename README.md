@@ -18,18 +18,19 @@ Two apps in one deployment:
 ```bash
 npm install
 cp .env.example .env.local   # fill in MONGODB_URI, JWT_SECRET, OPENAI_API_KEY
-npm run seed                 # one-time: creates 6 decks + 400 cards
-npm run dev
+npm run dev                  # decks + cards seed themselves on first load
 ```
 
-Other scripts: `npm test` (Vitest), `npm run lint`, `npm run build`.
+`npm run seed` still works for manual/local reseeds. Other scripts: `npm test` (Vitest), `npm run lint`, `npm run build`.
 
 ## How it works
 
 - **Decks/cards** (`/api/decks`, `/api/review/due`) are read from MongoDB — the app
   never generates vocab live. Seed data lives in `data/*.seed.json`, authored from
   `scripts/seed_data_{kr,fr}.py` and loaded idempotently by `scripts/seed.mjs`
-  (upsert on the unique `deckId+word` index, so re-runs are safe).
+  (upsert on the unique `deckId+word` index, so re-runs are safe). The same
+  seed runs automatically inside the app (`lib/seed.ts` via `/api/decks`)
+  whenever the database is empty — production needs no manual step.
 - **Reviews** (`POST /api/review`) run the SM-2 engine in `lib/sm2.ts` and upsert
   one `ReviewHistory` row per user+card. Grades: again / hard / good / easy
   (keyboard: 1–4). New cards start at EF 2.5; `again` resets repetitions and
@@ -61,8 +62,8 @@ Other scripts: `npm test` (Vitest), `npm run lint`, `npm run build`.
    fast instead of buffering forever.
 3. **Build without secrets:** env checks are lazy (inside functions, not module
    scope), so `next build` succeeds on CI/Vercel without a live DB.
-4. Run `npm run seed` once against the production DB (from your machine with the
-   Atlas URI) to populate decks/cards.
+4. No seeding step needed — `/api/decks` populates decks/cards itself on first
+   run against the production DB. (`npm run seed` remains for local use.)
 5. `/api/health` is a cheap readiness probe (DB ping) for uptime checks.
 
 ## Project structure

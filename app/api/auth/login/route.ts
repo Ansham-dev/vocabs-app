@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connectDB } from "@/lib/mongodb";
 import { User } from "@/models/User";
 import {
   authCookieOptions,
@@ -8,6 +7,7 @@ import {
   validateCredentials,
   verifyPassword,
 } from "@/lib/auth";
+import { withDB } from "@/lib/api";
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: valid.error }, { status: 400 });
   }
 
-  await connectDB();
+  return withDB(async () => {
   // passwordHash has select:false in the schema — explicitly include it.
   const user = await User.findOne({ email: valid.email }).select(
     "+passwordHash email name"
@@ -41,4 +41,5 @@ export async function POST(req: NextRequest) {
   });
   res.cookies.set(AUTH_COOKIE, await signToken(String(user._id)), authCookieOptions());
   return res;
+  });
 }
