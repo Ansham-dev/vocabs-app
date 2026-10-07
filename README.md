@@ -30,6 +30,7 @@ python vocab-app/build_vocab.py
 ## Features (Memrise-style 🌱)
 
 - 🌱 **Learn** — plant 5 seeds at a time: see + hear → tap meaning → type → listening test
+- 🏋️ **Practice** — no-pressure exam (10/20/30 questions) in Voilà app style: tap meanings · listening · typing with accent bar (é è ç…). Mistakes don't hurt your plants
 - 💧 **Review** — water weakest words first, 10 mixed tests (tap / type / listen)
 - ⚡ **Speed review** — 60-second rapid-fire round with personal best
 - 🔥 **Difficult words** — mistakes land here automatically for focused training
