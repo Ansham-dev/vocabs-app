@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voilà Vocabs — A1–B1 French Vocabulary</title>
+<style>
+:root{
+  --bg:#0f172a; --bg2:#1e293b; --card:#1e293b; --card2:#273549;
+  --accent:#f59e0b; --accent2:#ef4444; --blue:#3b82f6; --green:#22c55e;
+  --text:#f1f5f9; --muted:#94a3b8; --border:#334155;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(160deg,#0f172a,#1e1b4b 60%,#0f172a);color:var(--text);min-height:100vh}
+header{position:sticky;top:0;z-index:10;background:rgba(15,23,42,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:12px 16px}
+.hwrap{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{font-size:28px}
+h1{font-size:20px;font-weight:800}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);font-size:12px;width:100%}
+.stats{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:6px 12px;text-align:center;min-width:70px}
+.stat b{display:block;font-size:16px}
+.stat small{color:var(--muted);font-size:11px}
+nav{max-width:1100px;margin:14px auto 0;padding:0 16px;display:flex;gap:8px}
+.tab{flex:1;padding:12px;border-radius:12px 12px 0 0;border:1px solid var(--border);border-bottom:none;background:var(--bg2);color:var(--muted);font-weight:700;font-size:15px;cursor:pointer}
+.tab.active{background:var(--card);color:var(--text);box-shadow:inset 0 3px 0 var(--accent)}
+main{max-width:1100px;margin:0 auto;padding:16px;min-height:70vh}
+.panel{display:none;background:var(--card);border:1px solid var(--border);border-radius:0 12px 12px 12px;padding:16px}
+.panel.active{display:block}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.toolbar input,.toolbar select{background:#0f172a;border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px 12px;font-size:14px}
+.toolbar input{flex:2;min-width:160px}
+.toolbar select{flex:1;min-width:120px}
+.btn{border:none;border-radius:10px;padding:10px 16px;font-weight:700;font-size:14px;cursor:pointer;color:#fff;background:var(--blue)}
+.btn:hover{filter:brightness(1.15)}
+.btn.warn{background:#475569}
+.btn.good{background:var(--green);color:#052e16}
+.btn.bad{background:var(--accent2)}
+.btn.acc{background:var(--accent);color:#451a03}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.wcard{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:14px;position:relative;transition:transform .15s}
+.wcard:hover{transform:translateY(-2px)}
+.wcard.known{opacity:.55;border-color:var(--green)}
+.wcard .fr{font-size:18px;font-weight:800;color:#fff}
+.wcard .en{color:var(--accent);font-weight:600;margin:4px 0}
+.wcard .ex{color:var(--muted);font-size:13px;font-style:italic;margin-top:6px}
+.wcard .meta{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:700;padding:3px 8px;border-radius:20px;background:#0f172a;border:1px solid var(--border);color:var(--muted)}
+.tag.A1{background:#052e16;color:#4ade80;border-color:#166534}
+.tag.A2{background:#451a03;color:#fdba74;border-color:#9a3412}
+.tag.B1{background:#450a0a;color:#fca5a5;border-color:#991b1b}
+.cardbtns{display:flex;gap:6px;margin-top:10px}
+.iconbtn{flex:1;background:#0f172a;border:1px solid var(--border);color:var(--text);border-radius:8px;padding:7px;cursor:pointer;font-size:13px}
+.iconbtn:hover{border-color:var(--accent)}
+.count{color:var(--muted);font-size:13px;margin-bottom:10px}
+/* flashcards */
+.fc-wrap{max-width:560px;margin:0 auto;text-align:center}
+.fc-card{background:linear-gradient(150deg,#334155,#1e293b);border:2px solid var(--border);border-radius:20px;min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 20px;cursor:pointer;user-select:none;transition:transform .2s}
+.fc-card:hover{transform:scale(1.01)}
+.fc-card .big{font-size:34px;font-weight:800;margin-bottom:10px}
+.fc-card .hint{color:var(--muted);font-size:13px;margin-top:14px}
+.fc-card .answer{font-size:24px;color:var(--accent);font-weight:700}
+.fc-card .exf{color:var(--muted);font-style:italic;margin-top:10px;font-size:15px}
+.fc-ctrl{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.progress{height:10px;background:#0f172a;border-radius:10px;overflow:hidden;margin:12px 0;border:1px solid var(--border)}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--accent));width:0%}
+/* quiz */
+.qz-wrap{max-width:560px;margin:0 auto;text-align:center}
+.q-word{font-size:32px;font-weight:800;margin:10px 0}
+.q-opts{display:grid;gap:10px;margin-top:14px}
+.q-opt{background:var(--card2);border:2px solid var(--border);border-radius:12px;padding:14px;font-size:16px;cursor:pointer;color:var(--text);font-weight:600}
+.q-opt:hover{border-color:var(--blue)}
+.q-opt.correct{border-color:var(--green);background:#052e16}
+.q-opt.wrong{border-color:var(--accent2);background:#450a0a}
+.score{display:flex;gap:10px;justify-content:center;margin:10px 0;flex-wrap:wrap}
+.score div{background:#0f172a;border:1px solid var(--border);border-radius:10px;padding:8px 16px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+.loading{text-align:center;padding:40px;color:var(--muted)}
+@media(max-width:600px){.fc-card .big{font-size:26px}h1{font-size:17px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="logo">🇫🇷</div>
+    <div><h1>Voilà <span>Vocabs</span> — A1 → B1</h1>
+    <div class="sub" id="subline">Loading words…</div></div>
+    <div class="stats">
+      <div class="stat"><b id="sTotal">–</b><small>words</small></div>
+      <div class="stat"><b id="sKnown">0</b><small>known</small></div>
+      <div class="stat"><b id="sQuiz">0</b><small>quiz best</small></div>
+    </div>
+  </div>
+</header>
+<nav>
+  <button class="tab active" data-tab="explore">📚 Explore</button>
+  <button class="tab" data-tab="flash">🃏 Flashcards</button>
+  <button class="tab" data-tab="quiz">🎯 Quiz</button>
+</nav>
+<main>
+  <!-- EXPLORE -->
+  <section class="panel active" id="p-explore">
+    <div class="toolbar">
+      <input id="q" type="search" placeholder="🔍 Search French or English… (ex: bonjour, hello, manger)">
+      <select id="fLevel"><option value="">All levels</option><option>A1</option><option>A2</option><option>B1</option></select>
+      <select id="fSource"><option value="">All sources</option></select>
+      <select id="fKnown"><option value="">All cards</option><option value="new">🆕 Not learned</option><option value="known">✅ Learned</option></select>
+    </div>
+    <div class="count" id="count"></div>
+    <div class="grid" id="grid"></div>
+  </section>
+  <!-- FLASHCARDS -->
+  <section class="panel" id="p-flash">
+    <div class="fc-wrap">
+      <div class="toolbar" style="justify-content:center">
+        <select id="fcLevel"><option value="">All levels</option><option>A1</option><option>A2</option><option>B1</option></select>
+        <button class="btn warn" id="fcShuffle">🔀 Shuffle</button>
+        <button class="btn warn" id="fcHide">Hide known: OFF</button>
+      </div>
+      <div class="progress"><i id="fcBar"></i></div>
+      <div class="count" id="fcCount"></div>
+      <div class="fc-card" id="fcCard"><div class="loading">Loading…</div></div>
+      <div class="fc-ctrl">
+        <button class="btn warn" id="fcPrev">← Prev</button>
+        <button class="btn acc" id="fcSpeak">🔊 Listen</button>
+        <button class="btn warn" id="fcNext">Next →</button>
+      </div>
+      <div class="fc-ctrl">
+        <button class="btn bad" id="fcHard">✗ Still learning</button>
+        <button class="btn good" id="fcKnown">✓ I know it</button>
+      </div>
+      <p class="hint" style="color:var(--muted);font-size:12px;margin-top:10px">Tip: click the card to flip • progress auto-saves in this browser</p>
+    </div>
+  </section>
+  <!-- QUIZ -->
+  <section class="panel" id="p-quiz">
+    <div class="qz-wrap">
+      <div class="toolbar" style="justify-content:center">
+        <select id="qzLevel"><option value="">All levels</option><option>A1</option><option>A2</option><option>B1</option></select>
+        <select id="qzDir"><option value="fr-en">FR → EN</option><option value="en-fr">EN → FR</option></select>
+        <button class="btn acc" id="qzNew">▶ New round</button>
+      </div>
+      <div class="score"><div>Score: <b id="qScore">0</b></div><div>Streak: <b id="qStreak">0</b>🔥</div><div>Best: <b id="qBest">0</b></div></div>
+      <div class="progress"><i id="qBar"></i></div>
+      <div class="q-word" id="qWord">Press “New round” to start</div>
+      <div class="count" id="qEx"></div>
+      <div class="q-opts" id="qOpts"></div>
+    </div>
+  </section>
+</main>
+<footer>Voilà Vocabs • built from your course + Cosmopolite + DELF word lists • 🔊 uses built-in voice • progress saved locally</footer>
+
+<script>
+let WORDS = [];
+let known = new Set(JSON.parse(localStorage.getItem('voila-known') || '[]'));
+let best = parseInt(localStorage.getItem('voila-best') || '0');
+const $ = id => document.getElementById(id);
+const save = () => { localStorage.setItem('voila-known', JSON.stringify([...known])); localStorage.setItem('voila-best', best); paintStats(); };
+
+function speak(fr){
+  try{
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(fr);
+    u.lang = 'fr-FR'; u.rate = 0.9;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+function paintStats(){
+  $('sTotal').textContent = WORDS.length;
+  $('sKnown').textContent = known.size;
+  $('sQuiz').textContent = best;
+  const pct = WORDS.length ? Math.round(known.size/WORDS.length*100) : 0;
+  $('subline').textContent = `${WORDS.length} words • ${pct}% mastered • click 🔊 to hear French`;
+}
+// tabs
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); $('p-'+t.dataset.tab).classList.add('active');
+});
+// ---- explore ----
+function filtered(){
+  const q = $('q').value.trim().toLowerCase();
+  const L = $('fLevel').value, S = $('fSource').value, K = $('fKnown').value;
+  return WORDS.filter(w=>{
+    if(L && w.level!==L) return false;
+    if(S && w.source!==S) return false;
+    if(K==='known' && !known.has(w.fr)) return false;
+    if(K==='new' && known.has(w.fr)) return false;
+    if(q && !(w.fr.toLowerCase().includes(q)||w.en.toLowerCase().includes(q)||(w.theme||'').toLowerCase().includes(q))) return false;
+    return true;
+  });
+}
+function renderExplore(){
+  const list = filtered().slice(0, 300);
+  $('count').textContent = `${filtered().length} words found ${filtered().length>300?'(showing first 300 — refine search)':''}`;
+  $('grid').innerHTML = list.map((w,i)=>`
+    <div class="wcard ${known.has(w.fr)?'known':''}">
+      <div class="fr">${esc(w.fr)}</div><div class="en">${esc(w.en)}</div>
+      ${w.ex?`<div class="ex">“${esc(w.ex)}”</div>`:''}
+      <div class="meta"><span class="tag ${w.level}">${w.level}</span><span class="tag">${esc(w.source)}</span>${w.theme?`<span class="tag">${esc(w.theme.slice(0,28))}</span>`:''}</div>
+      <div class="cardbtns">
+        <button class="iconbtn" onclick="speak(decodeURIComponent('${encodeURIComponent(w.fr)}'))">🔊</button>
+        <button class="iconbtn" onclick="toggleKnown('${encodeURIComponent(w.fr)}')">${known.has(w.fr)?'✅':'☆ Mark known'}</button>
+      </div>
+    </div>`).join('') || '<p style="color:var(--muted)">No words match. Try another search.</p>';
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+window.toggleKnown = k => { k=decodeURIComponent(k); known.has(k)?known.delete(k):known.add(k); save(); renderExplore(); renderFc(); };
+['q','fLevel','fSource','fKnown'].forEach(id=>$(id).addEventListener('input',renderExplore));
+// ---- flashcards ----
+let deck=[], fi=0, flipped=false, hideKnown=false;
+function buildDeck(){
+  const L=$('fcLevel').value;
+  deck = WORDS.filter(w=>(!L||w.level===L)&&!(hideKnown&&known.has(w.fr)));
+  if(!deck.length) deck=[{fr:'No cards',en:'Adjust filter',ex:'',level:'A1',source:'',theme:''}];
+  fi=0; flipped=false; renderFc();
+}
+function renderFc(){
+  if(!deck.length) return;
+  const w=deck[fi%deck.length];
+  $('fcBar').style.width=(deck.length?((fi%deck.length)+1)/deck.length*100:0)+'%';
+  $('fcCount').textContent=`Card ${(fi%deck.length)+1} / ${deck.length} • ${w.level||''} ${w.theme||''} ${known.has(w.fr)?'• ✅ known':''}`;
+  $('fcCard').innerHTML = !flipped
+    ? `<div class="big">${esc(w.fr)}</div><div class="hint">👆 click to reveal meaning</div>`
+    : `<div class="big" style="font-size:26px">${esc(w.fr)}</div><div class="answer">${esc(w.en)}</div>${w.ex?`<div class="exf">“${esc(w.ex)}”</div>`:''}<div class="hint">👆 click to hide</div>`;
+  $('fcCard').onclick=()=>{flipped=!flipped;renderFc(); if(flipped) speak(w.fr);};
+}
+$('fcLevel').onchange=buildDeck;
+$('fcShuffle').onclick=()=>{deck.sort(()=>Math.random()-.5);fi=0;flipped=false;renderFc();};
+$('fcHide').onclick=e=>{hideKnown=!hideKnown;e.target.textContent='Hide known: '+(hideKnown?'ON':'OFF');buildDeck();};
+$('fcPrev').onclick=()=>{fi=(fi-1+deck.length)%deck.length;flipped=false;renderFc();};
+$('fcNext').onclick=()=>{fi=(fi+1)%deck.length;flipped=false;renderFc();};
+$('fcSpeak').onclick=()=>speak(deck[fi%deck.length].fr);
+$('fcKnown').onclick=()=>{known.add(deck[fi%deck.length].fr);save();fi=(fi+1)%deck.length;flipped=false;renderFc();};
+$('fcHard').onclick=()=>{known.delete(deck[fi%deck.length].fr);save();fi=(fi+1)%deck.length;flipped=false;renderFc();};
+// ---- quiz ----
+let score=0, streak=0, qAnswer=null, qTotal=0;
+function newQ(){
+  const L=$('qzLevel').value, dir=$('qzDir').value;
+  const pool=WORDS.filter(w=>!L||w.level===L);
+  if(pool.length<4){$('qWord').textContent='Not enough words';return;}
+  const w=pool[Math.floor(Math.random()*pool.length)];
+  const showFr = dir==='fr-en';
+  const correct = showFr?w.en:w.fr;
+  const opts=new Set([correct]);
+  while(opts.size<4){const r=pool[Math.floor(Math.random()*pool.length)];opts.add(showFr?r.en:r.fr);}
+  qAnswer=correct; qTotal++;
+  $('qWord').textContent=showFr?w.fr:w.en;
+  $('qEx').textContent=`${w.level} • ${w.source}${w.ex&&showFr?' • “'+w.ex+'”':''}`;
+  $('qWord').dataset.fr=w.fr;
+  $('qOpts').innerHTML=[...opts].sort(()=>Math.random()-.5).map(o=>`<button class="q-opt" onclick="answer(this,'${encodeURIComponent(o)}')">${esc(o)}</button>`).join('');
+  $('qBar').style.width=Math.min(100,qTotal*5)+'%';
+  speak(w.fr);
+}
+window.answer=(el,enc)=>{
+  const pick=decodeURIComponent(enc);
+  const ok=pick===qAnswer;
+  [...document.querySelectorAll('.q-opt')].forEach(b=>{
+    if(decodeURIComponent(b.getAttribute('onclick').match(/'(.*)'/)[1])===qAnswer)b.classList.add('correct');
+  });
+  if(ok){score+=10+streak*2;streak++;el.classList.add('correct');}
+  else{streak=0;el.classList.add('wrong');}
+  if(score>best){best=score;}
+  $('qScore').textContent=score;$('qStreak').textContent=streak;$('qBest').textContent=best;save();
+  setTimeout(newQ, ok?700:1500);
+};
+$('qzNew').onclick=()=>{score=0;streak=0;qTotal=0;$('qScore').textContent=0;$('qStreak').textContent=0;newQ();};
+// ---- load ----
+fetch('vocab.json').then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+  WORDS=d; paintStats();
+  [...new Set(WORDS.map(w=>w.source))].forEach(s=>{const o=document.createElement('option');o.textContent=s;$('fSource').appendChild(o);});
+  renderExplore(); buildDeck(); $('qBest').textContent=best;
+}).catch(()=>{
+  document.querySelector('main').innerHTML='<div class="loading">⚠️ Could not load <b>vocab.json</b>.<br><br>Run this app with a local server:<br><code>cd vocab-app &nbsp;&amp;&amp;&nbsp; python -m http.server 8080</code><br>then open <b>http://localhost:8080</b></div>';
+});
+</script>
+</body>
+</html>
