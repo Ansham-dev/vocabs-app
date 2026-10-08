@@ -642,14 +642,42 @@ function renderWords(){
 /* ================= LOAD ================= */
 async function loadWords(){
   // Works from /, /paris (rewrite), /paris/index.html, or plain file server.
-  for (const u of ['vocab.json','/paris/vocab.json']){
-    try{const r=await fetch(u);if(r.ok)return await r.json();}catch(e){}
+  for (const u of ['vocab.json','./vocab.json','/paris/vocab.json','/vocab-app/vocab.json']){
+    try{const r=await fetch(u);if(r.ok){const d=await r.json();if(Array.isArray(d)&&d.length)return d;}}catch(e){}
   }
   throw 0;
 }
+function showLoadError(){
+  const isFile=location.protocol==='file:';
+  document.querySelector('main').innerHTML=`<div class="panel on"><div class="center"><div class="hero">⚠️</div>
+  <div class="hero-title">Could not load <b>vocab.json</b></div>
+  <div class="hero-sub">${isFile?'You opened index.html by double-click — browsers block data files in that mode. Pick one option below:':'The word list failed to load. Try one of these:'}</div>
+  <div class="card pop" style="text-align:left"><b>Option 1 — open your word file (quickest)</b>
+  <div class="sm">Click below, then select <b>vocab.json</b> from the same folder as index.html.</div>
+  <input type="file" id="vfile" accept=".json,application/json" style="margin-top:10px;color:var(--ink)">
+  <div class="sm" id="vfilemsg" style="margin-top:6px"></div></div>
+  <div class="card pop" style="text-align:left"><b>Option 2 — serve the folder (recommended)</b>
+  <div class="sm">In PowerShell, run:</div>
+  <div style="margin:8px 0"><code>cd vocab-app<br>python -m http.server 8080</code></div>
+  <div class="sm">then open <b>http://localhost:8080</b></div>
+  <button class="cta ghost" onclick="location.reload()">Retry after starting server</button></div>
+  </div></div>`;
+  const inp=document.getElementById('vfile');
+  if(inp)inp.onchange=()=>{
+    const f=inp.files[0];if(!f)return;
+    const rd=new FileReader();
+    rd.onload=()=>{try{const d=JSON.parse(rd.result);if(!Array.isArray(d)||!d.length)throw 0;
+      WORDS=d;paintHead();renderHomes();
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));
+      document.querySelector('[data-tab="journey"]').classList.add('on');$('p-journey').classList.add('on');
+    }catch(e){document.getElementById('vfilemsg').textContent='That file did not look like vocab.json — please select the vocab.json from the vocab-app folder.';}};
+    rd.readAsText(f);
+  };
+}
 loadWords().then(d=>{
   WORDS=d;paintHead();renderHomes();
-}).catch(()=>{document.querySelector('main').innerHTML='<div class="panel on"><div class="center"><div class="hero">⚠️</div><div class="hero-sub">Could not load <b>vocab.json</b>.<br>Serve this folder:<br><code>python -m http.server 8080</code><br>then open <b>http://localhost:8080</b></div></div></div>';});
+}).catch(showLoadError);
 </script>
 </body>
 </html>
